@@ -1,0 +1,33 @@
+pipeline{
+    agent any
+    tools{
+        go 'go-1.17'
+    }
+    environment{
+        G0111MODULE='on'
+    }
+
+    stages{
+        stage('Test'){
+            steps{
+                git 'https://github.com/adminturneddevops/go-webapp-sample.git'
+                //this searches for the test files in the current and the subsequent directories
+                sh 'go test ./.....'
+            }
+        }
+        stage('Build '){
+            steps{
+                git 'https://github.com/adminturneddevops/go-webapp-sample.git'
+                //this searches for the test files in the current and the subsequent directories
+                sh 'go build .'
+                }
+            }
+
+            stage('Run '){
+            steps{
+                sh 'cd /var/lib/jenkins/workspace/go-full-pipeline && go-webapp-sample'
+                }
+            }
+            
+       }
+}
