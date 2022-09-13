@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('Build'){
             step{
-                echo"Hello world"
+                git 'https://github.com/adminturneddevops/go-webapp-sample.git'
             }
         }
     }
