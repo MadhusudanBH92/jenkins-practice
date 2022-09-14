@@ -25,7 +25,9 @@ pipeline{
 
             stage('Run '){
             steps{
-                sh 'cd /var/lib/jenkins/workspace/go-full-pipeline && go-webapp-sample'
+                //by default all the pipelines are saved under the workspaces
+                // this line navigates to the go-full-pipeline and navigates to the go-webapp-sample build in line 22
+                sh 'cd /var/lib/jenkins/workspace/go-full-pipeline && go-webapp-sample &'
                 }
             }
             
